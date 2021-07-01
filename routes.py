@@ -15,22 +15,23 @@ import sys
 # $docker run -p 55000:6379 redis
 # then check if redis running with $docker ps
 # r = redis.Redis(port=55000, decode_responses=True)
-# 2nd option) hosting
+# 2nd option) hosting #heroku
 # it takes from environment variables (in the system)
-# username = os.environ.get('USER_REDIS')
-# password = os.environ.get('PASSWORD_REDIS')
+username = os.environ.get('USER_POSTGRES')
+password = os.environ.get('PASSWORD_POSTGRES')
 #it reads from a file
+#local
 # with open('.env', 'r') as fh:
 #     vars_dict = dict(
 #         tuple(line.strip('\n').split('='))
 #         for line in fh.readlines() if not line.startswith('#') or line.startswith('\n')
 #     )
 #
-# username = vars_dict['USER_REDIS']
-# password = vars_dict['PASSWORD_REDIS']
+# username = vars_dict['USER_POSTGRES']
+# password = vars_dict['PASSWORD_POSTGRES']
 #
-# print(username)
-# print(password)
+print(username)
+print(password)
 # r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username=username,
 #                 password=password, decode_responses=True)
 
@@ -43,11 +44,11 @@ app = Flask(__name__)
 
 try:
     # Connect to an existing database
-    connection = psycopg2.connect(user="yapvmtvq",
-                                  password="6_NiJ7d17i0VHI3q2jydISFjHwA9Irop",
+    connection = psycopg2.connect(user=username,
+                                  password=password,
                                   host="ella.db.elephantsql.com",
                                   port="5432",
-                                  database="yapvmtvq")
+                                  database=username)
 
     # Create a cursor to perform database operations
     cursor = connection.cursor()
@@ -198,11 +199,11 @@ def saveResult():
         #PostgreSQL
         try:
             # Connect to an existing database
-            connection = psycopg2.connect(user="yapvmtvq",
-                                          password="6_NiJ7d17i0VHI3q2jydISFjHwA9Irop",
+            connection = psycopg2.connect(user=username,
+                                          password=password,
                                           host="ella.db.elephantsql.com",
                                           port="5432",
-                                          database="yapvmtvq")
+                                          database=username)
 
             # Create a cursor to perform database operations
             cursor = connection.cursor()
@@ -245,11 +246,11 @@ def saveResult():
         #PostgreSQL
         try:
             # Connect to an existing database
-            connection = psycopg2.connect(user="yapvmtvq",
-                                          password="6_NiJ7d17i0VHI3q2jydISFjHwA9Irop",
+            connection = psycopg2.connect(user=username,
+                                          password=password,
                                           host="ella.db.elephantsql.com",
                                           port="5432",
-                                          database="yapvmtvq")
+                                          database=username)
 
             # Create a cursor to perform database operations
             cursor = connection.cursor()
