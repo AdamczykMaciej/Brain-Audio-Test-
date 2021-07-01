@@ -15,17 +15,17 @@ import sys
 # username = os.environ.get('USER_REDIS')
 # password = os.environ.get('PASSWORD_REDIS')
 #it reads from a file
-with open('.env', 'r') as fh:
-    vars_dict = dict(
-        tuple(line.strip('\n').split('='))
-        for line in fh.readlines() if not line.startswith('#') or line.startswith('\n')
-    )
-
-username = vars_dict['USER_REDIS']
-password = vars_dict['PASSWORD_REDIS']
-
-print(username)
-print(password)
+# with open('.env', 'r') as fh:
+#     vars_dict = dict(
+#         tuple(line.strip('\n').split('='))
+#         for line in fh.readlines() if not line.startswith('#') or line.startswith('\n')
+#     )
+#
+# username = vars_dict['USER_REDIS']
+# password = vars_dict['PASSWORD_REDIS']
+#
+# print(username)
+# print(password)
 # r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username=username,
 #                 password=password, decode_responses=True)
 
