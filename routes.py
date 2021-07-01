@@ -1,4 +1,9 @@
+from builtins import Exception
+
 from flask import Flask, render_template, request
+import psycopg2
+import traceback
+import logging
 import redis
 import json
 import csv
@@ -34,6 +39,38 @@ app = Flask(__name__)
 # app.logger.setLevel(logging.ERROR)
 # app.logger.info(username+","+password)
 # two decorators, same function
+
+
+try:
+    # Connect to an existing database
+    connection = psycopg2.connect(user="yapvmtvq",
+                                  password="6_NiJ7d17i0VHI3q2jydISFjHwA9Irop",
+                                  host="ella.db.elephantsql.com",
+                                  port="5432",
+                                  database="yapvmtvq")
+
+    # Create a cursor to perform database operations
+    cursor = connection.cursor()
+    # Print PostgreSQL details
+    print("PostgreSQL server information")
+    print(connection.get_dsn_parameters(), "\n")
+    # Executing a SQL query
+    cursor.execute("SELECT version();")
+    # Fetch result
+    record = cursor.fetchone()
+    print("You are connected to - ", record, "\n")
+
+except (Exception, Error) as error:
+    print("Error while connecting to PostgreSQL", error)
+finally:
+    if (connection):
+        cursor.close()
+        connection.close()
+        print("PostgreSQL connection is closed")
+
+
+
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -136,34 +173,106 @@ def saveResult():
                   'audio4':'szczescie',
                   'audio5':'smutek',
                   'audio6':'zaskoczenie'}
+
+    user_id = result['cookie'].split('=')[1]
+    task = result['task']
+    reactionTime = result['reactionTime']
+    responseTime = result['responseTime']
+    answer = result['answer']
+
     if result['language'] == 'en':
         with open('static/results_en.csv', 'a', newline='') as csvfile:
-            is_correct = 'yes' if result['answer'].lower() == answers_en[result['task']].lower() else 'no'
+            is_correct = 'yes' if answer.lower() == answers_en[task].lower() else 'no'
 
             spamwriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-            spamwriter.writerow(['userid', result['cookie'].split('=')[1],
-                                 'Task', result['task'],
-                                 'reactionTime', result['reactionTime'],
-                                 'responseTime', result['responseTime'],
-                                 "User answer", result['answer'],
-                                 "Correct answer", answers_en[result['task']],
+            spamwriter.writerow(['userid', user_id,
+                                 'Task', task,
+                                 'reactionTime', reactionTime,
+                                 'responseTime', responseTime,
+                                 "User answer", answer,
+                                 "Correct answer", answers_en[task],
                                  "Is Correct", is_correct])
+
+        #PostgreSQL
+        try:
+            # Connect to an existing database
+            connection = psycopg2.connect(user="yapvmtvq",
+                                          password="6_NiJ7d17i0VHI3q2jydISFjHwA9Irop",
+                                          host="ella.db.elephantsql.com",
+                                          port="5432",
+                                          database="yapvmtvq")
+
+            # Create a cursor to perform database operations
+            cursor = connection.cursor()
+            # Print PostgreSQL details
+            print("PostgreSQL server information")
+            print(connection.get_dsn_parameters(), "\n")
+            # Executing a SQL query
+            values = (user_id, task, reactionTime, responseTime, answer, answers_en[task], is_correct)
+            cursor.execute(
+                "INSERT INTO Users(User_ID, Task, reaction_Time, Response_Time, User_Answer, Correct_Answer, Is_Correct) VALUES (%s,%s,%s,%s,%s,%s,%s)",
+                values
+            )
+            connection.commit()
+            print("INSERTED", values)
+        except Exception as error:
+            print("Error while connecting to PostgreSQL", error)
+            logging.error(traceback.format_exc())
+
+        finally:
+            if (connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
     else:
         with open('static/results.csv', 'a', newline='') as csvfile:
-            is_correct = 'yes' if result['answer'].lower() == answers_pl[result['task']].lower() else 'no'
+            is_correct = 'yes' if answer.lower() == answers_pl[task].lower() else 'no'
 
             spamwriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-            spamwriter.writerow(['userid', result['cookie'].split('=')[1],
-                                 'Task', result['task'],
-                                 'reactionTime', result['reactionTime'],
-                                 'responseTime', result['responseTime'],
-                                 "User answer", result['answer'],
-                                 "Correct answer", answers_pl[result['task']],
+            spamwriter.writerow(['userid', user_id,
+                                 'Task', task,
+                                 'reactionTime', reactionTime,
+                                 'responseTime', responseTime,
+                                 "User answer", answer,
+                                 "Correct answer", answers_pl[task],
                                  "Is Correct", is_correct])
+
+        #PostgreSQL
+        try:
+            # Connect to an existing database
+            connection = psycopg2.connect(user="yapvmtvq",
+                                          password="6_NiJ7d17i0VHI3q2jydISFjHwA9Irop",
+                                          host="ella.db.elephantsql.com",
+                                          port="5432",
+                                          database="yapvmtvq")
+
+            # Create a cursor to perform database operations
+            cursor = connection.cursor()
+            # Print PostgreSQL details
+            print("PostgreSQL server information")
+            print(connection.get_dsn_parameters(), "\n")
+            # Executing a SQL query
+            values = (user_id, task, reactionTime, responseTime, answer, answers_pl[task], is_correct)
+            cursor.execute(
+                "INSERT INTO Users(User_ID, Task, reaction_Time, Response_Time, User_Answer, Correct_Answer, Is_Correct) VALUES (%s,%s,%s,%s,%s,%s,%s)",
+                values
+                    )
+            connection.commit()
+            print("INSERTED", values)
+        except Exception as error:
+            print("Error while connecting to PostgreSQL", error)
+            logging.error(traceback.format_exc())
+        finally:
+            if (connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
 
     # return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
     return 'OK', 200

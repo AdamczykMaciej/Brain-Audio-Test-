@@ -4,3 +4,10 @@ userid d400305f-c4ff-45da-bd97-ba5d28374fd3 Task audio3 reactionTime 1.52 respon
 userid d400305f-c4ff-45da-bd97-ba5d28374fd3 Task audio4 reactionTime 1.138 responseTime 6.002 |User answer| Szczescie |Correct answer| szczescie |Is Correct| yes
 userid d400305f-c4ff-45da-bd97-ba5d28374fd3 Task audio5 reactionTime 0.602 responseTime 7.44 |User answer| Smutek |Correct answer| smutek |Is Correct| yes
 userid d400305f-c4ff-45da-bd97-ba5d28374fd3 Task audio6 reactionTime 1.82 responseTime 7.42 |User answer| Zaskoczenie |Correct answer| zaskoczenie |Is Correct| yes
+userid,dc868da7-05ea-4120-8dde-6657752851d8,Task,audio1,reactionTime,6.838,responseTime,9.226,User answer,Zlosc,Correct answer,zlosc,Is Correct,yes
+userid,dc868da7-05ea-4120-8dde-6657752851d8,Task,audio2,reactionTime,0,responseTime,208.88,User answer,Zlosc,Correct answer,obrzydzenie,Is Correct,no
+userid,dc868da7-05ea-4120-8dde-6657752851d8,Task,audio3,reactionTime,0,responseTime,193.702,User answer,Zlosc,Correct answer,lek,Is Correct,no
+userid,dc868da7-05ea-4120-8dde-6657752851d8,Task,audio4,reactionTime,0,responseTime,10.611,User answer,Zlosc,Correct answer,szczescie,Is Correct,no
+userid,dc868da7-05ea-4120-8dde-6657752851d8,Task,audio5,reactionTime,0,responseTime,2.453,User answer,Zaskoczenie,Correct answer,smutek,Is Correct,no
+userid,dc868da7-05ea-4120-8dde-6657752851d8,Task,audio6,reactionTime,0,responseTime,3.417,User answer,Zlosc,Correct answer,zaskoczenie,Is Correct,no
+userid,dc868da7-05ea-4120-8dde-6657752851d8,Task,audio5,reactionTime,0,responseTime,3.396,User answer,Zaskoczenie,Correct answer,smutek,Is Correct,no

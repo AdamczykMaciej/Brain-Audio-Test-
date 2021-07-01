@@ -4,3 +4,6 @@ userid,c122649a-0e7a-4de8-986a-804444f788fa; userid,Task,audio3,reactionTime,0.8
 userid,c122649a-0e7a-4de8-986a-804444f788fa; userid,Task,audio4,reactionTime,0.779,responseTime,6.7,User answer,Joy,Correct answer,happiness,Is Correct,no
 userid,c122649a-0e7a-4de8-986a-804444f788fa; userid,Task,audio5,reactionTime,0.629,responseTime,4.622,User answer,Sadness,Correct answer,sadness,Is Correct,yes
 userid,c122649a-0e7a-4de8-986a-804444f788fa; userid,Task,audio6,reactionTime,0.46,responseTime,5.409,User answer,Surprise,Correct answer,surprise,Is Correct,yes
+userid,3fe18be2-c2de-4c0c-a69c-eb31a0c11a14; userid,Task,audio6,reactionTime,0,responseTime,1.025,User answer,Anger,Correct answer,surprise,Is Correct,no
+userid,3fe18be2-c2de-4c0c-a69c-eb31a0c11a14; userid,Task,audio6,reactionTime,0,responseTime,2.443,User answer,Fear,Correct answer,surprise,Is Correct,no
+userid,3fe18be2-c2de-4c0c-a69c-eb31a0c11a14; userid,Task,audio6,reactionTime,0,responseTime,4.204,User answer,Fear,Correct answer,surprise,Is Correct,no
