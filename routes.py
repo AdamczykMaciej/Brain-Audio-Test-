@@ -204,10 +204,10 @@ def saveResult():
                 values
             )
             connection.commit()
-            app.logger.info("INSERTED", values)
+            print("INSERTED", values)
             # print("INSERTED", values)
         except Exception as error:
-            app.logger.info("Error while connecting to PostgreSQL", error)
+            print("Error while connecting to PostgreSQL", error)
 
         finally:
             if (connection):
@@ -251,9 +251,9 @@ def saveResult():
                 values
                     )
             connection.commit()
-            app.logger.info("INSERTED", values)
+            print("INSERTED", values)
         except Exception as error:
-            app.logger.info("Error while connecting to PostgreSQL", error)
+            print("Error while connecting to PostgreSQL", error)
         finally:
             if (connection):
                 cursor.close()
