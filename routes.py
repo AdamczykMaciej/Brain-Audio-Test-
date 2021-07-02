@@ -112,35 +112,35 @@ def thanks():
 # ENGLISH
 @app.route('/en/instructions')
 def instuctions_en():
-    return render_template('/en/instructions.html', the_title='Brain Test - Welcome Page')
+    return render_template('/EN/instructions.html', the_title='Brain Test - Welcome Page')
 
 @app.route('/en/audio1')
 def audio1_en():
-    return render_template('/en/audio1.html', the_title='Brain Test')
+    return render_template('/EN/audio1.html', the_title='Brain Test')
 
 @app.route('/en/audio2')
 def audio2_en():
-    return render_template('/en/audio2.html', the_title='Brain Test')
+    return render_template('/EN/audio2.html', the_title='Brain Test')
 
 @app.route('/en/audio3')
 def audio3_en():
-    return render_template('/en/audio3.html', the_title='Brain Test')
+    return render_template('/EN/audio3.html', the_title='Brain Test')
 
 @app.route('/en/audio4')
 def audio4_en():
-    return render_template('/en/audio4.html', the_title='Brain Test')
+    return render_template('/EN/audio4.html', the_title='Brain Test')
 
 @app.route('/en/audio5')
 def audio5_en():
-    return render_template('/en/audio5.html', the_title='Brain Test')
+    return render_template('/EN/audio5.html', the_title='Brain Test')
 
 @app.route('/en/audio6')
 def audio6_en():
-    return render_template('/en/audio6.html', the_title='Brain Test')
+    return render_template('/EN/audio6.html', the_title='Brain Test')
 
 @app.route('/en/thanks')
 def thanks_en():
-    return render_template('/en/thanks.html', the_title='Brain Test')
+    return render_template('/EN/thanks.html', the_title='Brain Test')
 
 # @app.route('/api/getLeaderboard', methods=['GET'])
 # def getLeaderboard():
