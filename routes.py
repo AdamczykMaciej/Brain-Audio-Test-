@@ -17,8 +17,8 @@ import sys
 # r = redis.Redis(port=55000, decode_responses=True)
 # 2nd option) hosting #heroku
 # it takes from environment variables (in the system)
-# username = os.environ.get('USER_POSTGRES')
-# password = os.environ.get('PASSWORD_POSTGRES')
+username = os.environ.get('USER_POSTGRES')
+password = os.environ.get('PASSWORD_POSTGRES')
 #it reads from a file
 #local
 # with open('.env', 'r') as fh:
