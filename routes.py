@@ -26,12 +26,12 @@ password = os.environ.get('PASSWORD_POSTGRES')
 #         tuple(line.strip('\n').split('='))
 #         for line in fh.readlines() if not line.startswith('#') or line.startswith('\n')
 #     )
-
+#
 # username = vars_dict['USER_POSTGRES']
 # password = vars_dict['PASSWORD_POSTGRES']
-
-print(username)
-print(password)
+#
+# print(username)
+# print(password)
 # r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username=username,
 #                 password=password, decode_responses=True)
 
@@ -64,7 +64,7 @@ try:
 except Exception as error:
     print("Error while connecting to PostgreSQL", error)
 finally:
-    if (connection):
+    if connection:
         cursor.close()
         connection.close()
         print("PostgreSQL connection is closed")
@@ -112,35 +112,35 @@ def thanks():
 # ENGLISH
 @app.route('/en/instructions')
 def instuctions_en():
-    return render_template('en/instructions.html', the_title='Brain Test - Welcome Page')
+    return render_template('/en/instructions.html', the_title='Brain Test - Welcome Page')
 
 @app.route('/en/audio1')
 def audio1_en():
-    return render_template('en/audio1.html', the_title='Brain Test')
+    return render_template('/en/audio1.html', the_title='Brain Test')
 
 @app.route('/en/audio2')
 def audio2_en():
-    return render_template('en/audio2.html', the_title='Brain Test')
+    return render_template('/en/audio2.html', the_title='Brain Test')
 
 @app.route('/en/audio3')
 def audio3_en():
-    return render_template('en/audio3.html', the_title='Brain Test')
+    return render_template('/en/audio3.html', the_title='Brain Test')
 
 @app.route('/en/audio4')
 def audio4_en():
-    return render_template('en/audio4.html', the_title='Brain Test')
+    return render_template('/en/audio4.html', the_title='Brain Test')
 
 @app.route('/en/audio5')
 def audio5_en():
-    return render_template('en/audio5.html', the_title='Brain Test')
+    return render_template('/en/audio5.html', the_title='Brain Test')
 
 @app.route('/en/audio6')
 def audio6_en():
-    return render_template('en/audio6.html', the_title='Brain Test')
+    return render_template('/en/audio6.html', the_title='Brain Test')
 
 @app.route('/en/thanks')
 def thanks_en():
-    return render_template('thanks.html', the_title='Brain Test')
+    return render_template('/en/thanks.html', the_title='Brain Test')
 
 # @app.route('/api/getLeaderboard', methods=['GET'])
 # def getLeaderboard():
