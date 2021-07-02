@@ -17,8 +17,8 @@ import sys
 # r = redis.Redis(port=55000, decode_responses=True)
 # 2nd option) hosting #heroku
 # it takes from environment variables (in the system)
-username = os.environ.get('USER_POSTGRES')
-password = os.environ.get('PASSWORD_POSTGRES')
+# username = os.environ.get('USER_POSTGRES')
+# password = os.environ.get('PASSWORD_POSTGRES')
 #it reads from a file
 #local
 # with open('.env', 'r') as fh:
@@ -36,9 +36,9 @@ password = os.environ.get('PASSWORD_POSTGRES')
 #                 password=password, decode_responses=True)
 
 app = Flask(__name__)
-# app.logger.addHandler(logging.StreamHandler(sys.stdout))
-# app.logger.setLevel(logging.ERROR)
-# app.logger.info(username+","+password)
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+app.logger.info(username+","+password)
 # two decorators, same function
 
 
@@ -142,21 +142,8 @@ def audio6_en():
 def thanks_en():
     return render_template('./EN/thanks.html', the_title='Brain Test')
 
-# @app.route('/api/getLeaderboard', methods=['GET'])
-# def getLeaderboard():
-#     results = []
-#     for result in r.keys('*'):
-#         results.append(r.hgetall(result))
-#     print("Results:",results)
-#     sortedResults = sorted(results, key=lambda x:float(x["score"][:-1]), reverse=True)
-#     return json.dumps(sortedResults)
-#
 @app.route('/api/saveResult', methods=['POST'])
 def saveResult():
-    # name = request.form.get("name")
-    # score = request.form.get("score")
-    # games = request.form.get("games")
-    # print(name, score, games)
 
     print('Incoming..')
     result = request.get_json();
@@ -217,10 +204,10 @@ def saveResult():
                 values
             )
             connection.commit()
-            print("INSERTED", values)
+            app.logger.info("INSERTED", values)
+            # print("INSERTED", values)
         except Exception as error:
-            print("Error while connecting to PostgreSQL", error)
-            logging.error(traceback.format_exc())
+            app.logger.info("Error while connecting to PostgreSQL", error)
 
         finally:
             if (connection):
@@ -264,10 +251,9 @@ def saveResult():
                 values
                     )
             connection.commit()
-            print("INSERTED", values)
+            app.logger.info("INSERTED", values)
         except Exception as error:
-            print("Error while connecting to PostgreSQL", error)
-            logging.error(traceback.format_exc())
+            app.logger.info("Error while connecting to PostgreSQL", error)
         finally:
             if (connection):
                 cursor.close()
