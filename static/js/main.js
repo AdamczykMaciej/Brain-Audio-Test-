@@ -45,46 +45,45 @@ $(document).ready(function() {
             flag+=1;
         }
     }, false);
-    document.getElementById("next").addEventListener("click", function(e) {
-
-                    clickedTime=Date.now();
-                    let answer = findAnswer()
-                    responseTime=(clickedTime-createdTime)/1000;
-                    task = window.location.pathname.replaceAll('/','').replace('en','');
-                    lang = window.location.pathname.split('/')[1];
-                    console.log(reactionTime);
-
-                    fetch('/api/saveResult', {
-
-                        // Declare what type of data we're sending
-                        headers: {
-                          'Content-Type': 'application/json',
-                          "Cache-Control": "no-cache"
-                        },
-
-                        // Specify the method
-                        method: 'POST',
-
-                        // A JSON payload
-                        body: JSON.stringify({
-                            "cookie": cookie,
-                            "reactionTime": (reactionTime-createdTime)/1000,
-                            "responseTime": responseTime,
-                            "task": task,
-                            "answer": answer,
-                            "language": lang
-                        })
-                    }).then(function (response) { // At this point, Flask has printed our JSON
-                        return response.text();
-                    }).then(function (text) {
-
-                        console.log('POST response: ');
-
-                        // Should be 'OK' if everything was successful
-                        console.log(text);
-                    });
-
-    }, false);
 });
+
+function sendData(){
+    clickedTime=Date.now();
+    let answer = findAnswer()
+    responseTime=(clickedTime-createdTime)/1000;
+    task = window.location.pathname.replaceAll('/','').replace('en','');
+    lang = window.location.pathname.split('/')[1];
+    console.log(reactionTime);
+
+    fetch('/api/saveResult', {
+
+        // Declare what type of data we're sending
+        headers: {
+          'Content-Type': 'application/json',
+          "Cache-Control": "no-cache"
+        },
+
+        // Specify the method
+        method: 'POST',
+
+        // A JSON payload
+        body: JSON.stringify({
+            "cookie": cookie,
+            "reactionTime": (reactionTime-createdTime)/1000,
+            "responseTime": responseTime,
+            "task": task,
+            "answer": answer,
+            "language": lang
+        })
+    }).then(function (response) { // At this point, Flask has printed our JSON
+        return response.text();
+    }).then(function (text) {
+
+        console.log('POST response: ');
+
+        // Should be 'OK' if everything was successful
+        console.log(text);
+    });
+}
 
 
