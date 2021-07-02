@@ -26,10 +26,10 @@ password = os.environ.get('PASSWORD_POSTGRES')
 #         tuple(line.strip('\n').split('='))
 #         for line in fh.readlines() if not line.startswith('#') or line.startswith('\n')
 #     )
-#
+
 # username = vars_dict['USER_POSTGRES']
 # password = vars_dict['PASSWORD_POSTGRES']
-#
+
 print(username)
 print(password)
 # r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username=username,
@@ -61,7 +61,7 @@ try:
     record = cursor.fetchone()
     print("You are connected to - ", record, "\n")
 
-except (Exception, Error) as error:
+except Exception as error:
     print("Error while connecting to PostgreSQL", error)
 finally:
     if (connection):
