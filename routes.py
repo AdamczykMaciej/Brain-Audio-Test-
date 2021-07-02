@@ -35,7 +35,7 @@ password = os.environ.get('PASSWORD_POSTGRES')
 # r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username=username,
 #                 password=password, decode_responses=True)
 
-app = Flask(__name__)
+app = Flask(__name__, debug=True)
 # app.logger.addHandler(logging.StreamHandler(sys.stdout))
 # app.logger.setLevel(logging.ERROR)
 # app.logger.info(username+","+password)

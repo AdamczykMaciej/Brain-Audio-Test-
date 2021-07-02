@@ -4,4 +4,8 @@ function uuidv4() {
     return v.toString(16);
   });
 }
-document.cookie = "userid="+uuidv4();
+
+const d = new Date();
+d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+let expires = "expires="+d.toUTCString();
+document.cookie = "userid="+uuidv4()+";"+ expires+";";
