@@ -6,6 +6,7 @@ function uuidv4() {
 }
 
 const d = new Date();
+const exdays = 3;
 d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
 let expires = "expires="+d.toUTCString();
 document.cookie = "userid="+uuidv4()+";"+ expires+";";
