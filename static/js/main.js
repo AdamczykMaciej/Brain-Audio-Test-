@@ -58,7 +58,8 @@ $(document).ready(function() {
 
                         // Declare what type of data we're sending
                         headers: {
-                          'Content-Type': 'application/json'
+                          'Content-Type': 'application/json',
+                          "Cache-Control": "no-cache"
                         },
 
                         // Specify the method
