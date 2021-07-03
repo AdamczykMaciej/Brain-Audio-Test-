@@ -9,3 +9,10 @@ userid,3fe18be2-c2de-4c0c-a69c-eb31a0c11a14; userid,Task,audio6,reactionTime,0,r
 userid,3fe18be2-c2de-4c0c-a69c-eb31a0c11a14; userid,Task,audio6,reactionTime,0,responseTime,4.204,User answer,Fear,Correct answer,surprise,Is Correct,no
 userid,3fe18be2-c2de-4c0c-a69c-eb31a0c11a14; userid,Task,audio6,reactionTime,0,responseTime,1.662,User answer,Fear,Correct answer,surprise,Is Correct,no
 userid,3fe18be2-c2de-4c0c-a69c-eb31a0c11a14; userid,Task,audio6,reactionTime,0,responseTime,0.836,User answer,Fear,Correct answer,surprise,Is Correct,no
+userid,75ee0a27-a129-4335-88de-c31c62fc412f; userid,Task,audio2,reactionTime,0,responseTime,32.638,User answer,Anger,Correct answer,disgust,Is Correct,no
+userid,75ee0a27-a129-4335-88de-c31c62fc412f; userid,Task,audio1,reactionTime,0,responseTime,2.365,User answer,Anger,Correct answer,anger,Is Correct,yes
+userid,75ee0a27-a129-4335-88de-c31c62fc412f; userid,Task,audio2,reactionTime,0,responseTime,1.59,User answer,Anger,Correct answer,disgust,Is Correct,no
+userid,75ee0a27-a129-4335-88de-c31c62fc412f; userid,Task,audio3,reactionTime,0,responseTime,0.814,User answer,Anger,Correct answer,fear,Is Correct,no
+userid,75ee0a27-a129-4335-88de-c31c62fc412f; userid,Task,audio4,reactionTime,0,responseTime,0.912,User answer,Anger,Correct answer,happiness,Is Correct,no
+userid,75ee0a27-a129-4335-88de-c31c62fc412f; userid,Task,audio5,reactionTime,0,responseTime,1.871,User answer,Anger,Correct answer,sadness,Is Correct,no
+userid,75ee0a27-a129-4335-88de-c31c62fc412f; userid,Task,audio6,reactionTime,0.001,responseTime,1.475,User answer,Anger,Correct answer,surprise,Is Correct,no

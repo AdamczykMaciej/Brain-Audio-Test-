@@ -47,7 +47,8 @@ $(document).ready(function() {
     }, false);
 });
 
-function sendData(){
+function saveResult(relativeUrl){
+
     clickedTime=Date.now();
     let answer = findAnswer()
     responseTime=(clickedTime-createdTime)/1000;
@@ -76,6 +77,7 @@ function sendData(){
             "language": lang
         })
     }).then(function (response) { // At this point, Flask has printed our JSON
+
         return response.text();
     }).then(function (text) {
 
@@ -83,7 +85,9 @@ function sendData(){
 
         // Should be 'OK' if everything was successful
         console.log(text);
+        window.location.href = window.location.origin +"/" + relativeUrl;
     });
+
 }
 
 
