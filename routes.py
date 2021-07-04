@@ -59,6 +59,24 @@ try:
     cursor.execute("SELECT version();")
     # Fetch result
     record = cursor.fetchone()
+
+    cursor.execute("SELECT * from Users;")
+    records = cursor.fetchall();
+    print(records)
+
+    # Use the COPY function on the SQL we created above.
+    SQL_for_file_output = "COPY ({0}) TO STDOUT WITH CSV HEADER".format("SELECT * from Users")
+
+    # Set up a variable to store our file path and name.
+    t_path_n_file = "D:/PJATK_Informatyka2/magisterkie/3_semestr/MKR/BrainTestSimulation_Audio/BrainTestSimulation_Audio/static/users.csv"
+
+    # Trap errors for opening the file
+    try:
+        with open(t_path_n_file, 'w') as f_output:
+            cursor.copy_expert(SQL_for_file_output, f_output)
+    except psycopg2.Error as e:
+        print("error",e)
+
     print("You are connected to - ", record, "\n")
 
 except Exception as error:
